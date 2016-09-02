@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.ListView;
 
 import com.apppartner.androidprogrammertest.adapters.ChatsArrayAdapter;
+import com.apppartner.androidprogrammertest.classes.Util;
 import com.apppartner.androidprogrammertest.models.ChatData;
 
 import org.json.JSONArray;
@@ -28,8 +29,6 @@ public class ChatActivity extends ActionBarActivity
     private ArrayList<ChatData> chatDataArrayList;
     private ChatsArrayAdapter chatsArrayAdapter;
     private ListView listView;
-    private ActionBar mActionBar;
-    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -38,12 +37,7 @@ public class ChatActivity extends ActionBarActivity
         setContentView(R.layout.activity_chat);
 
         listView = (ListView) findViewById(R.id.listView);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
-
-        mActionBar = getSupportActionBar();
-        mActionBar.setHomeButtonEnabled(true);
-        mActionBar.setDisplayHomeAsUpEnabled(true);
+        Util.setUpToolbar(this, R.id.toolbar, "Chat");
         chatDataArrayList = new ArrayList<ChatData>();
 
         try
