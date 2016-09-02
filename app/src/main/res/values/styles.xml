@@ -1,8 +1,12 @@
 <resources>
 
+    <color name="colorPrimary">#000</color>
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="android:windowFullscreen">true</item>
+        <item name="android:textColor">#FFF</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
     </style>
+
 </resources>

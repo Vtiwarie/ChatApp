@@ -9,6 +9,4 @@
     <string name="title_activity_login">ChatActivity</string>
     <string name="title_activity_animation">AnimationActivity</string>
 
-    <dimen name="btn_main_width">350dp</dimen>
-    <dimen name="btn_main_height">70dp</dimen>
 </resources>

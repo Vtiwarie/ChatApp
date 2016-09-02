@@ -2,7 +2,9 @@ package com.apppartner.androidprogrammertest;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ListView;
 
@@ -22,9 +24,12 @@ import java.util.ArrayList;
 public class ChatActivity extends ActionBarActivity
 {
     private static final String LOG_TAG = "ActionBarActivity";
+    private static final String TITLE = "Chat";
     private ArrayList<ChatData> chatDataArrayList;
     private ChatsArrayAdapter chatsArrayAdapter;
     private ListView listView;
+    private ActionBar mActionBar;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,6 +38,12 @@ public class ChatActivity extends ActionBarActivity
         setContentView(R.layout.activity_chat);
 
         listView = (ListView) findViewById(R.id.listView);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+
+        mActionBar = getSupportActionBar();
+        mActionBar.setHomeButtonEnabled(true);
+        mActionBar.setDisplayHomeAsUpEnabled(true);
         chatDataArrayList = new ArrayList<ChatData>();
 
         try
@@ -48,8 +59,7 @@ public class ChatActivity extends ActionBarActivity
                 chatDataArrayList.add(chatData);
             }
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             Log.w(LOG_TAG, e);
         }
 
