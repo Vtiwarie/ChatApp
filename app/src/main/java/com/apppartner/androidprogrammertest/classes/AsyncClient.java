@@ -21,9 +21,7 @@ public abstract class AsyncClient {
 
             @Override
             protected AsyncClient.Response doInBackground(AsyncClient.Request... requests) {
-                long connectionStart = System.currentTimeMillis();
                 Response response = handleRequest(requests[0]);
-                response.connecitonTime = System.currentTimeMillis() - connectionStart;
                 return response;
             }
         }.execute(request);
@@ -33,7 +31,7 @@ public abstract class AsyncClient {
 
     public abstract void handleResponse(Response response);
 
-    public static class Request {
+    public abstract static class Request {
         public String url;
         public String method;
         public static final String POST = "POST";
@@ -45,14 +43,11 @@ public abstract class AsyncClient {
         }
     }
 
-    public static class Response {
-        public String responseBody;
-        public int responseCode;
-        public long connecitonTime;
+    public static abstract class Response {
+        public String connectionTime;
 
-        public Response(String theResponseBody, int theResponseCode) {
-            responseBody = theResponseBody;
-            responseCode = theResponseCode;
+        Response(String theConnectionTime) {
+            connectionTime = theConnectionTime;
         }
     }
 

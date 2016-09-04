@@ -6,20 +6,19 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import android.util.Base64;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.net.Authenticator;
 import java.net.HttpURLConnection;
-import java.net.PasswordAuthentication;
 import java.net.URL;
+
+import com.apppartner.androidprogrammertest.classes.Login.LoginRequest;
+import com.apppartner.androidprogrammertest.classes.Login.LoginResponse;
 
 /**
  * Created by Vishaan on 9/1/2016.
@@ -59,23 +58,23 @@ public class Network {
         return null;
     }
 
-    public static AsyncClient.Response logInToNetwork(AsyncClient.Request request) {
+    public static LoginResponse logInToNetwork(LoginRequest loginRequest) {
         HttpURLConnection urlConnection;
         InputStream is = null;
         InputStreamReader inputStreamReader;
         BufferedReader bufferedReader;
         String line;
         StringBuilder stringBuilder;
-        int responseCode;
 
         try {
-            URL url = new URL(request.url);
+            long connectionEnd = System.currentTimeMillis();
+            URL url = new URL(loginRequest.url);
             stringBuilder = new StringBuilder();
 
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setRequestMethod(request.method);
-            final String username = "SuperBoise";
-            final String password = "qwerty";
+            urlConnection.setRequestMethod(loginRequest.method);
+            final String username = loginRequest.getLoginCredentials().username;
+            final String password = loginRequest.getLoginCredentials().password;
             urlConnection.setInstanceFollowRedirects(true);
             OutputStream os = urlConnection.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
@@ -85,8 +84,6 @@ public class Network {
             os.close();
             urlConnection.connect();
 
-            responseCode = urlConnection.getResponseCode();
-
             is = urlConnection.getInputStream();
             inputStreamReader = new InputStreamReader(is);
             bufferedReader = new BufferedReader(inputStreamReader);
@@ -95,8 +92,9 @@ public class Network {
                 stringBuilder.append(line);
                 stringBuilder.append("\n");
             }
+            connectionEnd = System.currentTimeMillis() - connectionEnd;
 
-            return new AsyncClient.Response(stringBuilder.toString(), responseCode);
+            return new LoginResponse(LoginResponse.parseFromJSON(stringBuilder.toString()), String.valueOf(connectionEnd));
         } catch (IOException exception) {
             Util.printTrace(LOG_TAG, exception);
         } finally {
