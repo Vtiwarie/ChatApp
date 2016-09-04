@@ -8,5 +8,6 @@
     <string name="title_activity_chat">ChatActivity</string>
     <string name="title_activity_login">ChatActivity</string>
     <string name="title_activity_animation">AnimationActivity</string>
+    <string name="app_partner_request_url">http://dev.apppartner.com/AppPartnerProgrammerTest/scripts/login.php</string>
 
 </resources>

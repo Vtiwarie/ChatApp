@@ -42,7 +42,7 @@
             android:textSize="22pt" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/loginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
@@ -50,7 +50,8 @@
             android:src="@drawable/btn_login"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="28dp" />
+            android:layout_marginBottom="28dp"
+            android:onClick="handleClick"/>
 
     </RelativeLayout>
 
