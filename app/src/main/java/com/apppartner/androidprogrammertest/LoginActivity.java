@@ -60,7 +60,6 @@ public class LoginActivity extends ActionBarActivity {
         switch (view.getId()) {
             case R.id.loginButton:
                 makeRequest();
-                Util.toast(this, "blah");
         }
     }
 }
