@@ -12,6 +12,9 @@ import org.json.JSONObject;
 public class Login {
     private static final String LOG_TAG = Login.class.getSimpleName();
 
+    /**
+     * Store the user's login credentials
+     */
     public static class LoginCredentials {
 
         public String username;
@@ -23,6 +26,9 @@ public class Login {
         }
     }
 
+    /**
+     * Make a login request
+     */
     public static class LoginRequest extends Request {
 
         private LoginCredentials loginCredentials;
@@ -37,6 +43,9 @@ public class Login {
         }
     }
 
+    /**
+     * Make a login response
+     */
     public static class LoginResponse extends Response{
 
         public String code;

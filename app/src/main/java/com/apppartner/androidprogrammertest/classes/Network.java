@@ -27,6 +27,13 @@ public class Network {
 
     private static final String LOG_TAG = Network.class.getSimpleName();
 
+    /**
+     * Retrieve an image from servia via network call
+     *
+     * @param context
+     * @param urlString
+     * @return
+     */
     public static Drawable getImageFromNetwork(Context context, String urlString) {
         HttpURLConnection urlConnection;
         InputStream is = null;
@@ -58,6 +65,12 @@ public class Network {
         return null;
     }
 
+    /**
+     * Login via network call
+     *
+     * @param loginRequest
+     * @return
+     */
     public static LoginResponse logInToNetwork(LoginRequest loginRequest) {
         HttpURLConnection urlConnection;
         InputStream is = null;

@@ -1,7 +1,7 @@
 package com.apppartner.androidprogrammertest;
 
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
@@ -9,10 +9,12 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.apppartner.androidprogrammertest.classes.AsyncClient;
-import com.apppartner.androidprogrammertest.classes.AsyncClient.*;
+import com.apppartner.androidprogrammertest.classes.AsyncClient.Request;
+import com.apppartner.androidprogrammertest.classes.Login.LoginCredentials;
+import com.apppartner.androidprogrammertest.classes.Login.LoginRequest;
+import com.apppartner.androidprogrammertest.classes.Login.LoginResponse;
 import com.apppartner.androidprogrammertest.classes.Network;
 import com.apppartner.androidprogrammertest.classes.Util;
-import com.apppartner.androidprogrammertest.classes.Login.*;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -30,10 +32,17 @@ public class LoginActivity extends ActionBarActivity {
 
         Util.setUpToolbar(this, R.id.toolbar, TITLE);
         mUsernameEditText = (EditText) findViewById(R.id.username);
+        mUsernameEditText.setTypeface(Typeface.createFromAsset(getAssets(), "Jelloween - Machinato.ttf"));
+
         mPasswordEditText = (EditText) findViewById(R.id.password);
+        mPasswordEditText.setTypeface(Typeface.createFromAsset(getAssets(), "Jelloween - Machinato.ttf"));
+
         initializeAsyncClient();
     }
 
+    /**
+     * Initialize the async client
+     */
     private void initializeAsyncClient() {
         mAsynClient = new AsyncClient() {
             @Override
@@ -50,6 +59,11 @@ public class LoginActivity extends ActionBarActivity {
         };
     }
 
+    /**
+     * Show login dialog
+     *
+     * @param loginResponse object
+     */
     private void showLoginDialog(final LoginResponse loginResponse) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final String dialogBody =
@@ -76,6 +90,11 @@ public class LoginActivity extends ActionBarActivity {
         startActivity(MainActivity.getMainActivityIntent(this));
     }
 
+    /**
+     * Handle click events for this activity
+     *
+     * @param view
+     */
     public void handleClick(View view) {
         switch (view.getId()) {
             case R.id.loginButton:
@@ -88,6 +107,11 @@ public class LoginActivity extends ActionBarActivity {
         }
     }
 
+    /**
+     * Process user input
+     *
+     * @throws Exception
+     */
     private void processUserInput() throws  Exception {
         final String username = mUsernameEditText.getText().toString();
         final String password = mPasswordEditText.getText().toString();
@@ -96,10 +120,15 @@ public class LoginActivity extends ActionBarActivity {
             throw new Exception("Field(s) cannot be empty");
         }
 
-        makeRequest(new LoginCredentials(username, password));
+        makeLoginRequest(new LoginCredentials(username, password));
     }
 
-    private void makeRequest(LoginCredentials loginCredentials) {
+    /**
+     * Make request to async client to login
+     *
+     * @param loginCredentials object
+     */
+    private void makeLoginRequest(LoginCredentials loginCredentials) {
         final String appPartnerUrl = getResources().getString(R.string.app_partner_request_url);
         mAsynClient.makeRequest(new LoginRequest(appPartnerUrl, Request.POST, loginCredentials));
     }
