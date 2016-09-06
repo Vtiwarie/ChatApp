@@ -37,7 +37,7 @@ public class ChatActivity extends ActionBarActivity
         setContentView(R.layout.activity_chat);
 
         listView = (ListView) findViewById(R.id.listView);
-        Util.setUpToolbar(this, R.id.toolbar, "Chat");
+        Util.setUpToolbar(this, R.id.toolbar, TITLE);
         chatDataArrayList = new ArrayList<ChatData>();
 
         try
@@ -68,6 +68,12 @@ public class ChatActivity extends ActionBarActivity
         startActivity(intent);
     }
 
+    /**
+     * Load chat JSON file
+     *
+     * @return String
+     * @throws IOException
+     */
     private String loadChatFile() throws IOException
     {
         InputStream inputStream = getResources().openRawResource(R.raw.chat_data);

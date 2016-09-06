@@ -16,9 +16,9 @@
         android:layout_above="@+id/button"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
-        android:text="Coding Tasks"
+        android:text="CODING TASKS"
         android:textColor="#ffffff"
-        android:textSize="22pt" />
+        android:textSize="13pt" />
 
     <ImageButton
         android:id="@+id/button"

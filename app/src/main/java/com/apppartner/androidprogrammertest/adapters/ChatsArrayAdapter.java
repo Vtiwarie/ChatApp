@@ -38,8 +38,10 @@ public class ChatsArrayAdapter extends ArrayAdapter<ChatData> {
 
         chatCell.usernameTextView = (TextView) convertView.findViewById(R.id.usernameTextView);
         chatCell.usernameTextView.setTypeface(Typeface.createFromAsset(mActivity.getAssets(), "Jelloween - Machinato.ttf"));
+
         chatCell.messageTextView = (TextView) convertView.findViewById(R.id.messageTextView);
         chatCell.usernameTextView.setTypeface(Typeface.createFromAsset(mActivity.getAssets(), "Jelloween - Machinato Light.ttf"));
+
         chatCell.avatarImageView = (ImageView) convertView.findViewById(R.id.img_avatar);
 
         ChatData chatData = getItem(position);
