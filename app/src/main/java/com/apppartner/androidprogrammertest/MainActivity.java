@@ -24,7 +24,9 @@ public class MainActivity extends ActionBarActivity
     }
 
     public static Intent getMainActivityIntent(Context context) {
-        return new Intent(context, MainActivity.class);
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        return intent;
     }
 
     public void onLoginButtonClicked(View v)

@@ -27,7 +27,8 @@
             android:background="@drawable/graphic_input"
             android:hint="Username"
             android:paddingLeft="20dp"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            android:singleLine="true" />
 
         <EditText
             android:id="@+id/password"
@@ -41,7 +42,8 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            android:singleLine="true" />
 
         <ImageButton
             android:id="@+id/loginButton"

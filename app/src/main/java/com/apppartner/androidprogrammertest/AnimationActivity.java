@@ -101,9 +101,4 @@ public class AnimationActivity extends ActionBarActivity {
         animator.setTarget(mAppPartnerIcon);
         animator.start();
     }
-
-    @Override
-    public void onBackPressed() {
-        startActivity(MainActivity.getMainActivityIntent(this));
-    }
 }

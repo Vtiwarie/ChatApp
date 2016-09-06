@@ -67,8 +67,8 @@ public class LoginActivity extends ActionBarActivity {
     private void showLoginDialog(final LoginResponse loginResponse) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final String dialogBody =
-                "Code: " + loginResponse.code + "\n" +
-                "Message: " + loginResponse.message + "\n" +
+                "Code: " + loginResponse.code + "\n\n" +
+                "Message: " + loginResponse.message + "\n\n" +
                 "Connection time: " + loginResponse.connectionTime + " milliseconds";
 
         AlertDialog dialog = builder.setMessage(dialogBody)
@@ -83,11 +83,6 @@ public class LoginActivity extends ActionBarActivity {
                 })
                 .create();
         dialog.show();
-    }
-
-    @Override
-    public void onBackPressed() {
-        startActivity(MainActivity.getMainActivityIntent(this));
     }
 
     /**

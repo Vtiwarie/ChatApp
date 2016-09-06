@@ -61,13 +61,6 @@ public class ChatActivity extends ActionBarActivity
         listView.setAdapter(chatsArrayAdapter);
     }
 
-    @Override
-    public void onBackPressed()
-    {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
     /**
      * Load chat JSON file
      *
