@@ -92,10 +92,10 @@ public class AnimationActivity extends ActionBarActivity {
     private void animate() {
         Animator animator;
         if (mShouldFadeIn) {
-            animator = AnimatorInflater.loadAnimator(this, android.R.animator.fade_in);
+            animator = AnimatorInflater.loadAnimator(this, R.animator.fade_in);
             mShouldFadeIn = false;
         } else {
-            animator = AnimatorInflater.loadAnimator(this, android.R.animator.fade_out);
+            animator = AnimatorInflater.loadAnimator(this, R.animator.fade_out);
             mShouldFadeIn = true;
         }
         animator.setTarget(mAppPartnerIcon);
