@@ -10,4 +10,6 @@
     <string name="title_activity_animation">AnimationActivity</string>
     <string name="animation_prompt">Animate the App Partner icon. Make it fade to 0\%% alpha and then to 100\%% alpha when the fade button is pressed.  Allow it to be dragged around the screen by touching and dragging.</string>
     <string name="animation_bonus_points">BONUS POINTS FOR CREATIVITY</string>
+    <string name="app_partner_request_url">http://dev.apppartner.com/AppPartnerProgrammerTest/scripts/login.php</string>
+
 </resources>

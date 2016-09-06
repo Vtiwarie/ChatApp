@@ -1,5 +1,6 @@
 package com.apppartner.androidprogrammertest;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -20,6 +21,10 @@ public class MainActivity extends ActionBarActivity
         mHeader = (TextView) findViewById(R.id.textView);
         //set font
         mHeader.setTypeface(Typeface.createFromAsset(getAssets(), "Jelloween - Machinato Bold.ttf"));
+    }
+
+    public static Intent getMainActivityIntent(Context context) {
+        return new Intent(context, MainActivity.class);
     }
 
     public void onLoginButtonClicked(View v)
