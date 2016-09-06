@@ -49,15 +49,16 @@
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
                     android:text="@string/animation_bonus_points"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <ImageView
                     android:id="@+id/app_partner_icon"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/ic_apppartner"
                     android:layout_below="@+id/animation_bonus"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_apppartner" />
+                    android:layout_marginTop="23dp" />
             </RelativeLayout>
 
             <ImageButton
