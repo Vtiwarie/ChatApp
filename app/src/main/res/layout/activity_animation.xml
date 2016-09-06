@@ -1,10 +1,77 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_animation"
     tools:context="com.apppartner.androidprogrammertest.AnimationActivity">
 
-    <include layout="@layout/toolbar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_animation"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="360dp"
+                android:background="@drawable/bg_cell_animation_test"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="16dp">
+
+                <TextView
+                    android:id="@+id/animation_prompt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="@string/animation_prompt"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/animation_bonus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/animation_prompt"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="@string/animation_bonus_points"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/app_partner_icon"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_below="@+id/animation_bonus"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_apppartner" />
+            </RelativeLayout>
+
+            <ImageButton
+                android:id="@+id/fade_button"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativeLayout1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/transparent"
+                android:onClick="handleClick"
+                android:scaleType="fitXY"
+                android:src="@drawable/btn_fade" />
+
+        </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>
