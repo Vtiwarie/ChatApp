@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.ListView;
 
 import com.apppartner.androidprogrammertest.adapters.ChatsArrayAdapter;
+import com.apppartner.androidprogrammertest.classes.Network;
 import com.apppartner.androidprogrammertest.classes.Util;
 import com.apppartner.androidprogrammertest.models.ChatData;
 
@@ -34,7 +35,23 @@ public class ChatActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
         Util.setUpToolbar(this, R.id.toolbar, TITLE);
         chatDataArrayList = new ArrayList<ChatData>();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if( ! Network.checkNetwork(this)) {
+            Util.toast(this, Network.STATUS_NO_NETWORK);
+        }
+        update();
+    }
+
+    /**
+     * update function, if ever data set changes. Data won't change in
+     * this particular app, however, it is good practice to add
+     * an update function in case the model data does change.
+     */
+    private void update() {
         try {
             String chatFileData = loadChatFile();
             JSONObject jsonData = new JSONObject(chatFileData);
@@ -49,8 +66,13 @@ public class ChatActivity extends AppCompatActivity {
             Log.w(LOG_TAG, e);
         }
 
-        chatsArrayAdapter = new ChatsArrayAdapter(this, chatDataArrayList);
-        listView.setAdapter(chatsArrayAdapter);
+        //update the adapter or create one if null
+        if(chatsArrayAdapter == null) {
+            chatsArrayAdapter = new ChatsArrayAdapter(this, chatDataArrayList);
+            listView.setAdapter(chatsArrayAdapter);
+        } else {
+            chatsArrayAdapter.notifyDataSetChanged();
+        }
     }
 
     /**

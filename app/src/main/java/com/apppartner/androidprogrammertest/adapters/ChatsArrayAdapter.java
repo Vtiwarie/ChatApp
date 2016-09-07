@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.apppartner.androidprogrammertest.R;
+import com.apppartner.androidprogrammertest.classes.Network;
 import com.apppartner.androidprogrammertest.classes.ThreadedImageView;
 import com.apppartner.androidprogrammertest.models.ChatData;
 
@@ -48,7 +49,9 @@ public class ChatsArrayAdapter extends ArrayAdapter<ChatData> {
 
         chatCell.usernameTextView.setText(chatData.username);
         chatCell.messageTextView.setText(chatData.message);
-        mThreadedImageView.loadImage(chatCell.avatarImageView, chatData.avatarURL);
+        if(Network.checkNetwork(mActivity)) {
+            mThreadedImageView.loadImage(chatCell.avatarImageView, chatData.avatarURL);
+        }
 
         return convertView;
     }

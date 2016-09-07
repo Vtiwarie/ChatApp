@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 
@@ -28,6 +30,7 @@ import java.net.URL;
 public class Network {
 
     private static final String LOG_TAG = Network.class.getSimpleName();
+    public static final String STATUS_NO_NETWORK = "no network detected.";
 
     /**
      * Retrieve an image from server via network call
@@ -122,5 +125,21 @@ public class Network {
             }
         }
         return null;
+    }
+
+    /**
+     * Check if device is connected to a network
+     *
+     * @param context
+     * @return boolean
+     */
+    public static boolean checkNetwork(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+        if(ni == null) {
+            return false;
+        } else {
+            return ni.isConnected();
+        }
     }
 }

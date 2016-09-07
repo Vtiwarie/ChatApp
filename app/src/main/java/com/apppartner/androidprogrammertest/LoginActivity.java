@@ -108,6 +108,11 @@ public class LoginActivity extends AppCompatActivity {
      * @throws Exception
      */
     private void processUserInput() throws  Exception {
+        if( ! Network.checkNetwork(this)) {
+            Util.toast(this, Network.STATUS_NO_NETWORK);
+            return;
+        }
+
         final String username = mUsernameEditText.getText().toString();
         final String password = mPasswordEditText.getText().toString();
 
