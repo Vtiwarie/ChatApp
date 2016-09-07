@@ -3,8 +3,8 @@ package com.apppartner.androidprogrammertest;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
@@ -17,7 +17,7 @@ import com.apppartner.androidprogrammertest.classes.Network;
 import com.apppartner.androidprogrammertest.classes.Util;
 
 
-public class LoginActivity extends ActionBarActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = LoginActivity.class.getSimpleName();
     private static final String TITLE = "Login";

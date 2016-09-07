@@ -4,16 +4,15 @@ import android.os.AsyncTask;
 
 /**
  * Created by Vishaan on 9/2/2016.
+ * <p/>
+ * Class created in order to send requests to and from a server via
+ * network calls.
  */
 public abstract class AsyncClient {
 
-    public AsyncClient() {
-
-    }
-
     public void makeRequest(Request request) {
 
-       new AsyncTask<Request, Void, Response>() {
+        new AsyncTask<Request, Void, Response>() {
             @Override
             protected void onPostExecute(AsyncClient.Response response) {
                 handleResponse(response);
@@ -21,8 +20,7 @@ public abstract class AsyncClient {
 
             @Override
             protected AsyncClient.Response doInBackground(AsyncClient.Request... requests) {
-                Response response = handleRequest(requests[0]);
-                return response;
+                return handleRequest(requests[0]);
             }
         }.execute(request);
     }
@@ -31,6 +29,10 @@ public abstract class AsyncClient {
 
     public abstract void handleResponse(Response response);
 
+    /**
+     * Template class used to make requests over the network.
+     * This is a very basic request object.
+     */
     public abstract static class Request {
         public String url;
         public String method;
@@ -43,6 +45,10 @@ public abstract class AsyncClient {
         }
     }
 
+    /**
+     * Template class used for the purpose of being extended
+     * in order to handle the response from a network request.
+     */
     public static abstract class Response {
         public String connectionTime;
 

@@ -7,6 +7,9 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 
+import com.apppartner.androidprogrammertest.classes.Login.LoginRequest;
+import com.apppartner.androidprogrammertest.classes.Login.LoginResponse;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -17,18 +20,17 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import com.apppartner.androidprogrammertest.classes.Login.LoginRequest;
-import com.apppartner.androidprogrammertest.classes.Login.LoginResponse;
-
 /**
  * Created by Vishaan on 9/1/2016.
+ *
+ * Class created to perform network operations.
  */
 public class Network {
 
     private static final String LOG_TAG = Network.class.getSimpleName();
 
     /**
-     * Retrieve an image from servia via network call
+     * Retrieve an image from server via network call
      *
      * @param context
      * @param urlString

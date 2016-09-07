@@ -1,10 +1,7 @@
 package com.apppartner.androidprogrammertest;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ListView;
 
@@ -22,8 +19,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
-public class ChatActivity extends ActionBarActivity
-{
+public class ChatActivity extends AppCompatActivity {
     private static final String LOG_TAG = "ActionBarActivity";
     private static final String TITLE = "Chat";
     private ArrayList<ChatData> chatDataArrayList;
@@ -31,8 +27,7 @@ public class ChatActivity extends ActionBarActivity
     private ListView listView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
@@ -40,20 +35,17 @@ public class ChatActivity extends ActionBarActivity
         Util.setUpToolbar(this, R.id.toolbar, TITLE);
         chatDataArrayList = new ArrayList<ChatData>();
 
-        try
-        {
+        try {
             String chatFileData = loadChatFile();
             JSONObject jsonData = new JSONObject(chatFileData);
             JSONArray jsonArray = jsonData.getJSONArray("data");
 
-            for (int i = 0; i < jsonArray.length(); i++)
-            {
+            for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 ChatData chatData = new ChatData(jsonObject);
                 chatDataArrayList.add(chatData);
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Log.w(LOG_TAG, e);
         }
 
@@ -67,8 +59,7 @@ public class ChatActivity extends ActionBarActivity
      * @return String
      * @throws IOException
      */
-    private String loadChatFile() throws IOException
-    {
+    private String loadChatFile() throws IOException {
         InputStream inputStream = getResources().openRawResource(R.raw.chat_data);
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -76,8 +67,7 @@ public class ChatActivity extends ActionBarActivity
         String receiveString;
         StringBuilder stringBuilder = new StringBuilder();
 
-        while ((receiveString = bufferedReader.readLine()) != null )
-        {
+        while ((receiveString = bufferedReader.readLine()) != null) {
             stringBuilder.append(receiveString);
             stringBuilder.append("\n");
         }
@@ -85,7 +75,6 @@ public class ChatActivity extends ActionBarActivity
         bufferedReader.close();
         inputStreamReader.close();
         inputStream.close();
-
 
         return stringBuilder.toString();
     }

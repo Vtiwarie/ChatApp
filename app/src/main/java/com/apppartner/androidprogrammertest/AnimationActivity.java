@@ -4,7 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +15,8 @@ import android.widget.TextView;
 import com.apppartner.androidprogrammertest.classes.Util;
 
 
-public class AnimationActivity extends ActionBarActivity {
+public class AnimationActivity extends AppCompatActivity {
 
-    private static final String LOG_TAG = AnimationActivity.class.getSimpleName();
     private static final String TITLE = "Animation";
     private TextView mAnimationPrompt;
     private TextView mAnimationBonus;
@@ -50,7 +49,8 @@ public class AnimationActivity extends ActionBarActivity {
                 switch (event.getAction() & MotionEvent.ACTION_MASK) {
                     case MotionEvent.ACTION_DOWN:
                         mParamsIcon.addRule(RelativeLayout.CENTER_HORIZONTAL, 0);
-                        ViewGroup iconParent = ((ViewGroup)view.getParent());
+                        ViewGroup iconParent = ((ViewGroup) view.getParent());
+
                         //add the imageview to the root layout to appear on top of other layouts
                         if (iconParent.findViewById(R.id.app_partner_icon) != null) {
                             iconParent.removeView(view);

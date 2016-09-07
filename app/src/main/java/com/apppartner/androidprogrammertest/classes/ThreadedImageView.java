@@ -11,6 +11,9 @@ import java.util.concurrent.Executors;
 
 /**
  * Created by Vishaan on 9/1/2016.
+ *
+ * Class created to assist in downloading chat avatar images
+ * from App Partner server.
  */
 public class ThreadedImageView {
 

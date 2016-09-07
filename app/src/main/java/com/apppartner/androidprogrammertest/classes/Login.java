@@ -8,6 +8,9 @@ import org.json.JSONObject;
 
 /**
  * Created by Vishaan on 9/4/2016.
+ *
+ * Class created to encapsulate user login
+ * using helper classes.
  */
 public class Login {
     private static final String LOG_TAG = Login.class.getSimpleName();
